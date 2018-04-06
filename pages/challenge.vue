@@ -9,7 +9,7 @@
       </button>
     </nav>
     <section v-if="activeTab === 'leaderboard'">
-      <h4>Leaderboard</h4>
+      <LeaderBoard />
     </section>
     <section v-if="activeTab === 'challenges'">
       <ul class="challenge-badges">
@@ -53,10 +53,12 @@
 
 <script>
   import ChallengeBadge from '~/components/ChallengeBadge.vue'
+  import LeaderBoard from '~/components/LeaderBoard.vue'
 
   export default {
     components: {
-      ChallengeBadge
+      ChallengeBadge,
+      LeaderBoard
     },
     data: function () {
       return {
