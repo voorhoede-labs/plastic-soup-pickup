@@ -15,6 +15,7 @@
       <ul>
         <li v-for="challenge in challenges" :key="challenge.title">
           <ChallengeBadge
+            :slug="challenge.slug"
             :image="challenge.image"
             :title="challenge.title"
             :points="challenge.points"
