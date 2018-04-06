@@ -8,14 +8,14 @@
       <p class="photo-text">Photograph the plastic horizontally and include the brand name</p>
 
       <form class="photo-form" enctype="multipart/form-data" method="post " action="">
-        <input id="browse-photos" type="file" class="input-browse-photos">
-        <label class="label-browse" for="browse-photos">
+        <input @change="saveImage($event)" id="take-photo" type="file" class="input-take-photo" accept="image/*" capture>
+        <label class="label-take" for="take-photo">
           <span>camera</span>
         </label>
 
-        <input @change="saveImage($event)" id="take-photo" type="file" class="input-take-photo" accept="image/*" capture>
-        <label class="label-take" for="take-photo">
-          <span>photo</span>
+        <input id="browse-photos" type="file" class="input-browse-photos">
+        <label class="label-browse" for="browse-photos">
+          <span>browse</span>
         </label>
     </form>
     </div>
@@ -181,6 +181,18 @@ export default {
   text-align: center;
   left: 0;
   width: 100%;
+}
+
+.label-take {
+  background-image: url(~/assets/get-ready/camera.png);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.label-browse {
+  background-image: url(~/assets/get-ready/browse.png);
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 
