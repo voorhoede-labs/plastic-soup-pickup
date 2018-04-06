@@ -1,5 +1,12 @@
 <template>
-  <div class="get-ready">
+  <photo-preview
+    v-if="src"
+    :title="previewTitle"
+    :src="src"
+    :tags="previewTags"
+    :loading="previewLoading"
+  />
+  <div v-else class="get-ready">
     <img src="~/assets/get-ready/get-ready-bg.png" class="get-ready-bg" />
 
     <div class="get-ready-content">
@@ -17,7 +24,7 @@
         <label class="label-take" for="take-photo">
           <span>photo</span>
         </label>
-    </form>
+      </form>
     </div>
 
     <img ref="preview" :src="src" class="image-preview" />
@@ -26,6 +33,8 @@
 
 <script>
 import firebase from 'firebase';
+
+import PhotoPreview from '~/components/PhotoPreview.vue';
 
 try {
   firebase.initializeApp({
@@ -43,24 +52,34 @@ try {
 export default {
   data() {
     return {
-      src: ''
+      src: '',
+      previewTitle: '',
+      previewTags: [],
+      previewLoading: true,
     }
   },
   methods: {
     uploadToFirebase(file) {
-    // Create a root reference
-    const ref = firebase.storage().ref();
-    const fileRef = ref.child(file.name);
+      // Create a root reference
+      const ref = firebase.storage().ref();
+      const fileRef = ref.child(file.name);
 
-    fileRef
-      .put(file)
-      .then(snapshot => {
-        return fetch('https://pick-up-10-api-wshddsgbes.now.sh/api?userid=welcome12345&imageurl=' + snapshot.downloadURL)
-      })
-      .then(res => res.json())
-      .then(this.getLabels)
-      .then(console.log)
-      .catch(alert);
+      fileRef
+        .put(file)
+        .then(snapshot => {
+          return fetch('https://pick-up-10-api-wshddsgbes.now.sh/api?userid=welcome12345&imageurl=' + snapshot.downloadURL)
+        })
+        .then(res => res.json())
+        .then(this.getLabels)
+        .then(labels => {
+          this.previewLoading = false;
+          this.previewTitle = labels.bestGuess ? labels.bestGuess.label : null;
+          this.tags = labels.entities
+            .filter(entity => entity.description && entity.description.length)
+            .splice(0, 5)
+            .map(entity => entity.description);
+        })
+        .catch(alert);
     },
     saveImage({ target }) {
       const input = target;
@@ -85,6 +104,9 @@ export default {
         entities
       }
     }
+  },
+  components: {
+    PhotoPreview
   }
 }
 </script>
