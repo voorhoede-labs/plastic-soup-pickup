@@ -3,13 +3,39 @@
     <h4>Leaderboard</h4>
     <ol>
       <li v-for="user in sortedUsers" :key="user.id">
-        {{ user.id }} has {{ user.numImages }} point{{ user.numImages === 1 ? '' : 's' }}!!!
+        <span class="username">
+          {{ user.id }}
+        </span>
+        <span class="points">
+          {{ user.numImages * 13 }}
+        </span>
       </li>
     </ol>
   </div>
 </template>
 
 <style>
+  li {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.25em;
+    border-bottom: 1px solid black;
+    padding: 0.25em;
+  }
+
+  .points {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    background: red;
+    border-radius: 50%;
+    text-align: center;
+    width: 2rem;
+    height: 2rem;
+    color: white;
+    font-weight: bold;
+  }
 </style>
 
 <script>
