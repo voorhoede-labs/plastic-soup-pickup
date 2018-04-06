@@ -63,11 +63,11 @@ export default {
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 60%;
+  width: 80%;
 }
 
 .photo-preview__tag {
-  padding: .325rem;
+  padding: .125rem .325rem;
   display: inline-block;
   background: #F26F69;
   border-radius: .5rem;
