@@ -2,13 +2,13 @@
   <li>
     <figure class="challenge-badge">
       <img
-      v-bind:src="require(`~/assets/challenge-badges/${image}`)"
-      alt=""
-      width="150px"
-      height="150px"
+        v-bind:src="require(`~/assets/challenge-badges/${image}`)"
+        alt=""
+        width="150px"
+        height="150px"
       >
-      <figcaption>Getting started</figcaption>
-      <p>25 points</p>
+      <figcaption>{{ title }}</figcaption>
+      <p>{{ points }} points</p>
     </figure>
   </li>
 </template>
@@ -24,7 +24,9 @@
 <script>
 export default {
   props: {
-    image: String
+    image: String,
+    title: String,
+    points: String,
   }
 }
 </script>
