@@ -86,3 +86,6 @@ button:focus,
   background-color: #f59995;
   color: white;
 }
+.container {
+  padding: 10px;
+}
