@@ -1,6 +1,6 @@
 <template>
   <div class="engage-button">
-    <nuxt-link to="/challenge" class="button">Start the challenge</nuxt-link>
+    <nuxt-link to="/photo" class="button">Start the challenge</nuxt-link>
     <nuxt/>
   </div>
 </template>
