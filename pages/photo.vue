@@ -1,10 +1,13 @@
 <template>
-  <div>
+  <div class="get-ready">
+    <img src="~/assets/get-ready/get-ready-bg.png" class="get-ready-bg" />
+
+    <h1 class="photo-title">GET READY <span class="photo-subtitle">to pick up 10</span></h1>
+
+    <img src="~/assets/get-ready/get-ready-mobile.png" class="get-ready-mobile" />
     <img ref="preview" :src="src" class="image-preview" />
 
-    <h1>GET READY <span class="photo-subtitle">to pick up 10</span></h1>
-
-    <p></p>
+    <p>Photograph the plastic horizontally and include the brand name</p>
 
     <form enctype="multipart/form-data" method="post " action="">
       <input id="browse-photos" type="file" class="input-browse-photos">
@@ -81,6 +84,22 @@ export default {
 </script>
 
 <style>
+.get-ready {
+  position: relative;
+}
+
+.get-ready-bg {
+  position: absolute;
+  z-index: 1;
+  max-width: 100%;
+  height: auto;
+}
+
+.get-ready-mobile {
+  max-width: 100%;
+  height: auto;
+}
+
 .image-preview {
   max-width: 100%;
   height: auto;
@@ -94,5 +113,22 @@ export default {
   overflow: hidden;
   position: absolute;
   z-index: -1;
+}
+
+.photo-title {
+  position: absolute;
+  left: 0;
+  top: 40px;
+  width: 100%;
+  z-index: 2;
+  color: #fff;
+  text-align: center;
+}
+
+.photo-subtitle {
+  display: block;
+  margin-top: 5px;
+  font-size: 24px;
+  text-transform: uppercase;
 }
 </style>
