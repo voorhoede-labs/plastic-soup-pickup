@@ -3,11 +3,11 @@
     <section class="container">
         <app-step-one/>
         <app-step-two/>
+        <app-step-four/>
     </section>
     <share-on-facebook/>
     <share-on-twitter/>
     <app-intro-video/>
-    <introduction/>
     <app-impact/>
     <app-footer/>
   </div>
@@ -16,6 +16,7 @@
 <script>
 import AppStepOne from '~/components/AppStepOne.vue'
 import AppStepTwo from '~/components/AppStepTwo.vue'
+import AppStepFour from '~/components/AppStepFour.vue'
 import Introduction from '~/components/Introduction.vue'
 import AppImpact from '~/components/AppImpact.vue'
 import AppFooter from '~/components/AppFooter.vue'
@@ -35,6 +36,7 @@ export default {
   components: {
     AppStepOne,
     AppStepTwo,
+    AppStepFour,
     Introduction,
     AppFooter,
     ShareOnFacebook,
