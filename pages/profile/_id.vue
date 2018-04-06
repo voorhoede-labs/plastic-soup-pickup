@@ -1,6 +1,6 @@
 <template>
   <div class="profile">
-    <h1 class="profile__title" v-if="user">{{ user.username }}</h1>
+    <h1 class="profile__title">{{ user.username }}</h1>
     <img v-if="avatar" class="profile__image" :src="avatar.src" role="presentation" />
     <img v-else class="profile__image profile__image--empty" src="~/assets/svgs/icon-profile.svg" role="presentation" />
     <ul class="profile__tabs">
@@ -8,10 +8,19 @@
       <li><button :class="{'profile__tab--active': activeTab === 'leaderboard'}" class="profile__tab profile__tab--last" @click="setActiveTab('leaderboard')">Leaderboard</button></li>
     </ul>
     <div v-if="activeTab === 'challenge'">
-      <p>Heth</p>
+      <ul class="profile__challenges">
+        <li v-for="challenge in challenges" :key="challenge.title">
+          <ChallengeBadge
+            :slug="challenge.slug"
+            :image="challenge.image"
+            :title="challenge.title"
+            :points="challenge.points"
+          />
+        </li>
+      </ul>
     </div>
     <div v-if="activeTab === 'leaderboard'">
-      <p>hetheht</p>
+      <leader-board />
     </div>
   </div>
 </template>
@@ -77,10 +86,28 @@
     border-top-right-radius: 16px;
     border-bottom-right-radius: 16px;
   }
+
+  .profile__challenges {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .profile__challenges li {
+    width: 50%;
+  }
+
+  .profile__challenges figcaption {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
 </style>
 
 <script>
   import axios from 'axios'
+  import ChallengeBadge from '~/components/ChallengeBadge.vue'
+  import leaderBoard from '~/components/LeaderBoard.vue'
+  import challenges from '~/stubs/challenges.json'
+
   function request (url) {
     return axios.get(url).then(response => response.data)
   }
@@ -98,10 +125,15 @@
 
       this.cookieId = id
     },
+    components: {
+      ChallengeBadge,
+      leaderBoard
+    },
     data() {
       return {
         cookieId: null,
-        activeTab: 'challenge'
+        activeTab: 'challenge',
+        challenges
       }
     },
     async asyncData({ params }) {

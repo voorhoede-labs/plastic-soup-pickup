@@ -66,7 +66,12 @@
 </style>
 
 <script>
+import axios from 'axios'
 import json from '../stubs/users.json'
+
+function request (url) {
+  return axios.get(url).then(response => response.data)
+}
 
 export default {
   data() {
@@ -93,13 +98,8 @@ export default {
     }
   },
   created() {
-    fetch(`https://pick-up-10-api-isrgvzstxl.now.sh/api/leaderboard`).then(response => {
-      if (response.ok) {
-        return response.json()
-      } else {
-        alert('API broke :(')
-      }
-    }).then(users => {
+    request(`https://pick-up-10-api-isrgvzstxl.now.sh/api/leaderboard`)
+    .then(users => {
       this.users = Object.keys(users).map(key => {
         const user = users[key]
         user.id = key
