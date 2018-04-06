@@ -10,21 +10,20 @@
         <blockquote>I'm an awesome quote</blockquote>
       </div>
     </section>
-    <footer/>
+    <app-footer/>
   </div>
-  
 </template>
 
 <script>
 import AppIntroVideo from '~/components/AppIntroVideo.vue'
 import Introduction from '~/components/Introduction.vue'
-import Footer from '~/components/Footer.vue'
+import AppFooter from '~/components/AppFooter.vue'
 
 export default {
   components: {
     AppIntroVideo,
     Introduction,
-    Footer,
+    AppFooter,
   }
 }
 </script>
