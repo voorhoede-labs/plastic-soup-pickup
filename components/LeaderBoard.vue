@@ -20,7 +20,8 @@
       <h3>HEY BUDDY</h3>
       <p>You don’t have a user name yet, mr <code>{{ userName }}</code>!!</p>
       <form method="post" action="https://pick-up-10-api-isrgvzstxl.now.sh/api/user">
-        <input class="field" type="text" placeholder="Your name here!">
+        <input type="hidden" name="userid" :value="userId">
+        <input class="field" type="text" name="username" placeholder="Your name here!">
         <br>
         <button>Say my name</button>
       </form>
@@ -83,6 +84,9 @@ export default {
     },
     userExists() {
       return !!this.getCookie('psp-user-name')
+    },
+    userId() {
+      return this.getCookie('psp-user-id')
     },
     userName() {
       return this.getCookie('psp-user-name') || this.getCookie('psp-user-id') || 'UNKNOWN USER ERROR'
