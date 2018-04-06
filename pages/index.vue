@@ -6,8 +6,6 @@
         <app-step-three/>
         <app-step-four/>
     </section>
-    <share-on-facebook/>
-    <share-on-twitter/>
     <app-footer/>
   </div>
 </template>

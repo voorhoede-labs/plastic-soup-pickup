@@ -3,6 +3,8 @@
     <img class="image" src="http://plasticsoupsurfer.org/assets/icons/footer-wave.svg" alt="">
 
     <div class="footer-content">
+      <share-on-facebook/>
+      <share-on-twitter/>
       <h3>Press & Interviews</h3>
       <ul>
         <li>Martine Eyzenga</li>
@@ -21,6 +23,16 @@
   </footer>
 </template>
 <script>
+import ShareOnFacebook from 'components/ShareOnFacebook.vue'
+import ShareOnTwitter from 'components/ShareOnTwitter.vue'
+
+export default {
+  components: {
+    ShareOnFacebook,
+    ShareOnTwitter
+  }
+}
+
 </script>
 <style>
   footer {
