@@ -1,26 +1,40 @@
 <template>
-  <div class="get-ready">
+  <photo-preview
+    v-if="src"
+    :title="previewTitle"
+    :src="src"
+    :tags="previewTags"
+    :loading="previewLoading"
+  />
+  <div v-else class="get-ready">
     <img src="~/assets/get-ready/get-ready-bg.png" class="get-ready-bg" />
 
-    <div class="title-mobile">
+    <div class="get-ready-content">
       <h1 class="photo-title">GET READY <span class="photo-subtitle">to pick up 10</span></h1>
       <img src="~/assets/get-ready/get-ready-mobile.png" class="get-ready-mobile" />
       <p class="photo-text">Photograph the plastic horizontally and include the brand name</p>
+
+      <form class="photo-form" enctype="multipart/form-data" method="post " action="">
+        <input @change="saveImage($event)" id="take-photo" type="file" class="input-take-photo" accept="image/*" capture>
+        <label class="label-take" for="take-photo">
+          <span>camera</span>
+        </label>
+
+        <input id="browse-photos" type="file" class="input-browse-photos">
+        <label class="label-browse" for="browse-photos">
+          <span>browse</span>
+        </label>
+      </form>
     </div>
 
     <img ref="preview" :src="src" class="image-preview" />
-
-    <form enctype="multipart/form-data" method="post " action="">
-      <input id="browse-photos" type="file" class="input-browse-photos">
-      <label class="label-browse" for="browse-photos">camera</label>
-      <input @change="saveImage($event)" id="take-photo" type="file" class="input-take-photo" accept="image/*" capture>
-      <label class="label-take" for="take-photo">photo</label>
-    </form>
   </div>
 </template>
 
 <script>
 import firebase from 'firebase';
+
+import PhotoPreview from '~/components/PhotoPreview.vue';
 
 try {
   firebase.initializeApp({
@@ -38,24 +52,34 @@ try {
 export default {
   data() {
     return {
-      src: ''
+      src: '',
+      previewTitle: '',
+      previewTags: [],
+      previewLoading: true,
     }
   },
   methods: {
     uploadToFirebase(file) {
-    // Create a root reference
-    const ref = firebase.storage().ref();
-    const fileRef = ref.child(file.name);
+      // Create a root reference
+      const ref = firebase.storage().ref();
+      const fileRef = ref.child(file.name);
 
-    fileRef
-      .put(file)
-      .then(snapshot => {
-        return fetch('https://pick-up-10-api-wshddsgbes.now.sh/api?userid=welcome12345&imageurl=' + snapshot.downloadURL)
-      })
-      .then(res => res.json())
-      .then(this.getLabels)
-      .then(console.log)
-      .catch(alert);
+      fileRef
+        .put(file)
+        .then(snapshot => {
+          return fetch('https://pick-up-10-api-wshddsgbes.now.sh/api?userid=welcome12345&imageurl=' + snapshot.downloadURL)
+        })
+        .then(res => res.json())
+        .then(this.getLabels)
+        .then(labels => {
+          this.previewLoading = false;
+          this.previewTitle = labels.bestGuess ? labels.bestGuess.label : null;
+          this.tags = labels.entities
+            .filter(entity => entity.description && entity.description.length)
+            .splice(0, 5)
+            .map(entity => entity.description);
+        })
+        .catch(alert);
     },
     saveImage({ target }) {
       const input = target;
@@ -80,6 +104,9 @@ export default {
         entities
       }
     }
+  },
+  components: {
+    PhotoPreview
   }
 }
 </script>
@@ -97,17 +124,12 @@ export default {
   height: auto;
 }
 
-.title-mobile {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+.get-ready-content {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding-top: 40px;
-  height: 50vh;
+  height: 70vh;
   align-items: center;
   padding-left: 24px;
   padding-right: 24px;
@@ -128,11 +150,19 @@ export default {
 .input-browse-photos,
 .input-take-photo {
   width: 0.1px;
-  height: 0.1;
+  height: 0.1px;
   opacity: 0;
   overflow: hidden;
   position: absolute;
   z-index: -1;
+}
+
+.photo-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 80%;
+  margin-top: 76px;
 }
 
 .photo-title {
@@ -143,19 +173,48 @@ export default {
 
 .photo-subtitle {
   display: block;
-  margin-top: 5px;
+  margin-top: -10px;
   font-size: 24px;
   text-transform: uppercase;
 }
 
 .photo-text {
   z-index: 5;
+  text-align: center;
   color: #fff;
 }
 
-.label-browse {
-  position: absolute;
+.label-browse,
+.label-take {
+  position: relative;
   z-index: 4;
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  padding: 20px;
+  background-color: #f0706c;
+}
+
+.label-browse span,
+.label-take span {
+  position: absolute;
+  top: 100%;
+  text-align: center;
+  left: 0;
+  width: 100%;
+}
+
+.label-take {
+  background-image: url(~/assets/get-ready/camera.png);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.label-browse {
+  background-image: url(~/assets/get-ready/browse.png);
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 

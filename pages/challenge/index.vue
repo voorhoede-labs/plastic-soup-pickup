@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div>
     <nav>
       <button @click="activeTab = 'leaderboard'" :class="{'is-active': activeTab === 'leaderboard'}">
         Leaderboard
@@ -12,48 +12,25 @@
       <LeaderBoard />
     </section>
     <section v-if="activeTab === 'challenges'">
-      <ul class="challenge-badges">
-        <ChallengeBadge
-          image="dummy.jpg"
-          title="Getting Started"
-          points="25"
-        />
-        <ChallengeBadge
-          image="dummy.jpg"
-          title="Collector"
-          points="50"
-        />
-        <ChallengeBadge
-          image="dummy.jpg"
-          title="Litter Selfie"
-          points="50"
-        />
-        <ChallengeBadge
-          image="dummy.jpg"
-          title="Picking Spree"
-          points="50"
-        />
-        <ChallengeBadge
-          image="dummy.jpg"
-          title="Power Up!"
-          points="100"
-        />
-        <ChallengeBadge
-          image="dummy.jpg"
-          title="Pick Up 10"
-          points="250"
-        />
+      <ul>
+        <li v-for="challenge in challenges" :key="challenge.title">
+          <ChallengeBadge
+            :slug="challenge.slug"
+            :image="challenge.image"
+            :title="challenge.title"
+            :points="challenge.points"
+          />
+        </li>
       </ul>
       <a href="/photo">let's pickup plastic!</a>
     </section>
   </div>
 </template>
 
-
-
 <script>
   import ChallengeBadge from '~/components/ChallengeBadge.vue'
   import LeaderBoard from '~/components/LeaderBoard.vue'
+  import challenges from '~/stubs/challenges.json'
 
   export default {
     components: {
@@ -63,22 +40,27 @@
     data: function () {
       return {
         activeTab: 'challenges',
+        challenges,
       }
     }
   }
 </script>
 
-<style>
-  .challenge-badges {
+<style scoped>
+  nav button {
+
+  }
+
+  ul {
     display: flex;
     flex-wrap: wrap;
   }
 
-  .challenge-badges li {
+  ul li {
     width: 50%;
   }
 
-  .challenge-badges figcaption {
+  ul figcaption {
     font-weight: bold;
     margin-bottom: 0.5rem;
   }

@@ -4,11 +4,18 @@
 		<div class="text-container">
       <p>Recognition of the litter that way we know which companies are the source ask them to take more action & responsibly make other people aware - be a role model more than picking up litter - not only cleaning but also monitoring, get the data, power our voices towards companies, and have them be more responsible.</p>
 		</div>
-    <engage-button class="action" />
+		<div class="button-centerd-container">
+    	<engage-button class="action" />
+		</div>
 	</div>
 </template>
 
 <style>
+.button-centerd-container {
+	display: flex;
+	width: 100%;
+	justify-content: center;
+}
 .action {
   margin-top: 60px;
 }

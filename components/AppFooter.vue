@@ -1,6 +1,7 @@
 <template>
   <footer>
     <img class="image" src="http://plasticsoupsurfer.org/assets/icons/footer-wave.svg" alt="">
+
     <div class="footer-content">
       <h3>Press & Interviews</h3>
       <ul>
@@ -19,15 +20,15 @@
     </div>
   </footer>
 </template>
-
+<script>
+</script>
 <style>
   footer {
     width: 100%;
   }
 
   .image {
-    width: 200%;
-    margin-left: -200px;
+    width: 100%;
     position: relative;
     bottom: -10px;
   }

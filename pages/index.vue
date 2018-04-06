@@ -8,7 +8,6 @@
     </section>
     <share-on-facebook/>
     <share-on-twitter/>
-    <app-intro-video/>
     <app-footer/>
   </div>
 </template>
