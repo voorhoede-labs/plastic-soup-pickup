@@ -2,7 +2,7 @@
   <div class="get-ready">
     <img src="~/assets/get-ready/get-ready-bg.png" class="get-ready-bg" />
 
-    <div class="title-mobile">
+    <div class="get-ready-content">
       <h1 class="photo-title">GET READY <span class="photo-subtitle">to pick up 10</span></h1>
       <img src="~/assets/get-ready/get-ready-mobile.png" class="get-ready-mobile" />
       <p class="photo-text">Photograph the plastic horizontally and include the brand name</p>
@@ -102,12 +102,7 @@ export default {
   height: auto;
 }
 
-.title-mobile {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+.get-ready-content {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
