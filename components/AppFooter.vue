@@ -6,9 +6,9 @@
 
 <style>
   .app-footer {
-      width: 100%;
-    padding: 2em 0;
-    margin: 0 auto;
+    width: 100%;
+    padding: 1em 0;
+    margin: 0 auto; 
   }
 </style>
 
