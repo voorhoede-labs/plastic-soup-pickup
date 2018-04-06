@@ -2,17 +2,23 @@
   <section class="container">
     <div>
       <app-logo/>
-      <h1 class="title">
+      <h1>
         plastic-soup-pickup
       </h1>
-      <h2 class="subtitle">
+      <h2>
         Plastic soup surfer pickup
       </h2>
-      <div class="links">
-        <a href="/challenge" class="button--green">
-          let's go!
-        </a>
-      </div>
+      <h3>
+        Plastic soup surfer pickup
+      </h3>
+      <h4>
+        Plastic soup surfer pickup
+      </h4>
+      <p>Test test test</p>
+      <a href="/challenge" class="button">
+        let's go!
+      </a>
+      <blockquote>I'm an awesome quote</blockquote>
     </div>
   </section>
 </template>
@@ -27,33 +33,3 @@ export default {
 }
 </script>
 
-<style>
-.container {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* 1 */
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
-</style>

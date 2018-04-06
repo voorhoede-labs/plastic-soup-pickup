@@ -1,0 +1,89 @@
+* {
+  box-sizing: border-box;
+}
+
+*::before, *::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: 'proxima nova', sans-serif;
+  color: #2B2F47;
+  max-width: 40em;
+}
+
+h1,
+.h1 {
+  font-family: 'nanami rounded', sans-serif;
+  font-weight: bold;
+  font-size: 3.125rem;
+  color: #F26F69;
+}
+
+h2,
+.h2 {
+  font-family: 'nanami rounded', sans-serif;
+  font-weight: bold;
+  font-size: 1.6875rem;
+}
+
+h3,
+.h3 {
+  font-family: 'nanami rounded', sans-serif;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+h4,
+.h4 {
+  font-family: 'nanami rounded', sans-serif;
+  font-weight: bold;
+  font-size: .875rem;
+}
+
+small,
+.small {
+  font-size: .875rem;
+}
+
+a,
+.link {
+  display: inline-block;
+  font-size: .875rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: #36AFC5;
+}
+
+a:hover,
+a:focus,
+.link:hover,
+.link:focus {
+  color: #2B2F47;
+}
+
+blockquote,
+.blockquote,
+quote,
+.quote {
+  font-size: 2.5rem;
+  font-style: italic;
+  color: #F26F69;
+}
+
+button,
+.button {
+  text-transform: uppercase;
+  color: white;
+  background: #F26F69;
+  border-radius: 4px;
+  padding: .5rem 1rem;
+}
+
+button:hover,
+button:focus,
+.button:hover,
+.button:focus {
+  background-color: #f59995;
+  color: white;
+}
