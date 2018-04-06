@@ -1,7 +1,12 @@
 <template>
-  <div class="container">
-    <app-step-one/>
-    <app-step-two/>
+  <div>
+    <section class="container">
+        <app-step-one/>
+        <app-step-two/>
+    </section>
+    <share-on-facebook/>
+    <share-on-twitter/>
+    <app-intro-video/>
     <introduction/>
     <app-impact/>
     <app-footer/>
@@ -14,6 +19,8 @@ import AppStepTwo from '~/components/AppStepTwo.vue'
 import Introduction from '~/components/Introduction.vue'
 import AppImpact from '~/components/AppImpact.vue'
 import AppFooter from '~/components/AppFooter.vue'
+import ShareOnFacebook from '~/components/ShareOnFacebook.vue'
+import ShareOnTwitter from '~/components/ShareOnTwitter.vue'
 
 export default {
   created() {
@@ -30,6 +37,8 @@ export default {
     AppStepTwo,
     Introduction,
     AppFooter,
+    ShareOnFacebook,
+    ShareOnTwitter,
     AppImpact
   },
   data () {
