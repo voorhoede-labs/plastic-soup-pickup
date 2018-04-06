@@ -8,7 +8,6 @@
 .full-width-video {
 	position: relative;
 	display: flex;
-	width: 100vw;
 	height:70vh;
 	background: grey;
 	background-image: url(https://plasticsoupsurfer.org/assets/images/header-s.jpg);
