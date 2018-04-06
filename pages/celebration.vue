@@ -6,6 +6,6 @@
         great moves, keep it up!
       </h1>
     </div>
-    <a href="/leaderboard">let's share & leaderboard</a>
+    <!-- <a href="/leaderboard">let's share & leaderboard</a> -->
   </section>
 </template>

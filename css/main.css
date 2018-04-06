@@ -2,63 +2,67 @@
   box-sizing: border-box;
 }
 
-*::before, *::after {
+*::before,
+*::after {
   box-sizing: inherit;
 }
-
 body {
-  font-family: 'proxima nova', sans-serif;
-  color: #2B2F47;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "proxima nova", sans-serif;
+  color: #2b2f47;
+  max-width: 40em;
+  line-height: 1.45;
 }
 
 h1,
 .h1 {
-  font-family: 'nanami rounded', sans-serif;
+  font-family: "nanami rounded", sans-serif;
   font-weight: bold;
   font-size: 3.125rem;
-  color: #F26F69;
+  color: #f26f69;
 }
 
 h2,
 .h2 {
-  font-family: 'nanami rounded', sans-serif;
+  font-family: "nanami rounded", sans-serif;
   font-weight: bold;
   font-size: 1.6875rem;
 }
 
 h3,
 .h3 {
-  font-family: 'nanami rounded', sans-serif;
+  font-family: "nanami rounded", sans-serif;
   font-weight: bold;
   font-size: 1.25rem;
 }
 
 h4,
 .h4 {
-  font-family: 'nanami rounded', sans-serif;
+  font-family: "nanami rounded", sans-serif;
   font-weight: bold;
-  font-size: .875rem;
+  font-size: 0.875rem;
 }
 
 small,
 .small {
-  font-size: .875rem;
+  font-size: 0.875rem;
 }
 
 a,
 .link {
   display: inline-block;
-  font-size: .875rem;
+  font-size: 0.875rem;
   font-weight: bold;
   text-decoration: none;
-  color: #36AFC5;
+  color: #36afc5;
 }
 
 a:hover,
 a:focus,
 .link:hover,
 .link:focus {
-  color: #2B2F47;
+  color: #2b2f47;
 }
 
 blockquote,
@@ -67,16 +71,16 @@ quote,
 .quote {
   font-size: 2.5rem;
   font-style: italic;
-  color: #F26F69;
+  color: #f26f69;
 }
 
 button,
 .button {
   text-transform: uppercase;
   color: white;
-  background: #F26F69;
+  background: #f26f69;
   border-radius: 4px;
-  padding: .5rem 1rem;
+  padding: 0.5rem 1rem;
 }
 
 button:hover,
@@ -85,4 +89,7 @@ button:focus,
 .button:focus {
   background-color: #f59995;
   color: white;
+}
+.container {
+  padding: 10px;
 }
