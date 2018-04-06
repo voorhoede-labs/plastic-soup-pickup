@@ -1,11 +1,12 @@
 <template>
-  <photo-preview
-    v-if="src"
-    :title="previewTitle"
-    :src="src"
-    :tags="previewTags"
-    :loading="previewLoading"
-  />
+  <div v-if="src" class="photo-preview-wrapper" v-bind:style="{ backgroundImage: src }">
+    <photo-preview
+      :title="previewTitle"
+      :src="src"
+      :tags="previewTags"
+      :loading="previewLoading"
+    />
+  </div>
   <div v-else class="get-ready">
     <img src="~/assets/get-ready/get-ready-bg.png" class="get-ready-bg" />
 
@@ -67,7 +68,7 @@ export default {
       fileRef
         .put(file)
         .then(snapshot => {
-          return fetch('https://pick-up-10-api-wshddsgbes.now.sh/api?userid=welcome12345&imageurl=' + snapshot.downloadURL)
+          return fetch(`https://pick-up-10-api-wshddsgbes.now.sh/api?userid=${this.getCookie('psp-user-id')}&imageurl=${snapshot.downloadURL}`);
         })
         .then(res => res.json())
         .then(this.getLabels)
@@ -103,6 +104,24 @@ export default {
         bestGuess: bestGuesses[0],
         entities
       }
+    },
+    getCookie(name) {
+      if (!process.browser) {
+        return ''
+      }
+
+      if (document.cookie.length > 0) {
+        let c_start = document.cookie.indexOf(name + '=')
+        if (c_start != -1) {
+          c_start = c_start + name.length + 1
+          let c_end = document.cookie.indexOf(';', c_start)
+          if (c_end == -1) {
+            c_end = document.cookie.length
+          }
+          return unescape(document.cookie.substring(c_start, c_end))
+        }
+      }
+      return ''
     }
   },
   components: {
@@ -112,6 +131,10 @@ export default {
 </script>
 
 <style>
+.photo-preview-wrapper {
+  height: 100vh;
+}
+
 .get-ready {
   position: relative;
   height: 100vh;
