@@ -2,18 +2,19 @@
   <div class="get-ready">
     <img src="~/assets/get-ready/get-ready-bg.png" class="get-ready-bg" />
 
-    <h1 class="photo-title">GET READY <span class="photo-subtitle">to pick up 10</span></h1>
+    <div class="title-mobile">
+      <h1 class="photo-title">GET READY <span class="photo-subtitle">to pick up 10</span></h1>
+      <img src="~/assets/get-ready/get-ready-mobile.png" class="get-ready-mobile" />
+      <p class="photo-text">Photograph the plastic horizontally and include the brand name</p>
+    </div>
 
-    <img src="~/assets/get-ready/get-ready-mobile.png" class="get-ready-mobile" />
     <img ref="preview" :src="src" class="image-preview" />
-
-    <p>Photograph the plastic horizontally and include the brand name</p>
 
     <form enctype="multipart/form-data" method="post " action="">
       <input id="browse-photos" type="file" class="input-browse-photos">
-      <label for="browse-photos">camera</label>
+      <label class="label-browse" for="browse-photos">camera</label>
       <input @change="saveImage($event)" id="take-photo" type="file" class="input-take-photo" accept="image/*" capture>
-      <label for="take-photo">photo</label>
+      <label class="label-take" for="take-photo">photo</label>
     </form>
   </div>
 </template>
@@ -86,6 +87,7 @@ export default {
 <style>
 .get-ready {
   position: relative;
+  height: 100vh;
 }
 
 .get-ready-bg {
@@ -95,8 +97,26 @@ export default {
   height: auto;
 }
 
+.title-mobile {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 40px;
+  height: 50vh;
+  align-items: center;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
 .get-ready-mobile {
-  max-width: 100%;
+  margin-top: 15px;
+  z-index: 2;
+  max-width: 60%;
   height: auto;
 }
 
@@ -116,10 +136,6 @@ export default {
 }
 
 .photo-title {
-  position: absolute;
-  left: 0;
-  top: 40px;
-  width: 100%;
   z-index: 2;
   color: #fff;
   text-align: center;
@@ -131,4 +147,16 @@ export default {
   font-size: 24px;
   text-transform: uppercase;
 }
+
+.photo-text {
+  z-index: 5;
+  color: #fff;
+}
+
+.label-browse {
+  position: absolute;
+  z-index: 4;
+}
+
+
 </style>
