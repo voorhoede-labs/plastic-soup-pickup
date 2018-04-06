@@ -4,24 +4,24 @@
 		<p class="app-step-text">Pick 10 plastic bottles citizens can create a new feedback system for companies back in up on the system.</p>
 		<ul class="list">
 			<li class="list-item">
-				<div class="list-item-image"></div>
+				<div class="list-item-image list-item-image1"></div>
 				<div class="list-item-text">
 					<span class="h2">1.</span>
 					<span>Rise up and go outside</span>
 				</div>
 			</li>
 			<li class="list-item">
-				<div class="list-item-image"></div>
+				<div class="list-item-image list-item-image2"></div>
 				<div class="list-item-text">
 					<span class="h2">2.</span>
 					<span>Pick up 10 plastics </span>
 				</div>
 			</li>
 			<li class="list-item">
-				<div class="list-item-image"></div>
+				<div class="list-item-image list-item-image3"></div>
 				<div class="list-item-text">
 					<span class="h2">3.</span>
-					<span>flaksjdf</span>
+					<span>Back it up in the gallery</span>
 				</div>
 			</li>
 			<li class="list-item-center">
@@ -44,6 +44,15 @@ export default {
 
 
 <style>
+.list-item-image1 {
+	background-image: url(/assets/steps-illustrations/mascot-1.svg);
+}
+.list-item-image2 {
+	background-image: url(/assets/steps-illustrations/mascot-2.svg);
+}
+.list-item-image3 {
+	background-image: url(/assets/steps-illustrations/mascot-3.svg);
+}
 .list-item-center {
 	display: flex;
 	align-items: center;
@@ -76,7 +85,7 @@ export default {
 }
 .list-item-image {
 	width: 40%;
-    background-image: url(https://plasticsoupsurfer.org/assets/images/logo.png);
+
     background-size: contain;
     background-repeat: no-repeat;
     height: 140px;
