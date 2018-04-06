@@ -6,19 +6,19 @@
 
 <style>
   .app-footer {
-    width: 100%;
+      width: 100%;
     padding: 2em 0;
     margin: 0 auto;
   }
 </style>
 
 <script>
-import EngageButton from '~/components/EngageButton.vue'
+  import EngageButton from '~/components/EngageButton.vue'
 
-export default {
-  components: {
-    EngageButton,
+  export default {
+    components: {
+      EngageButton,
+    }
   }
-}
 </script>
 
