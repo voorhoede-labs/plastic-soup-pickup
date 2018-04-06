@@ -9,6 +9,7 @@
 body {
   font-family: 'proxima nova', sans-serif;
   color: #2B2F47;
+  max-width: 40em;
 }
 
 h1,
