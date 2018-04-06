@@ -72,7 +72,6 @@ export default {
         .then(res => res.json())
         .then(this.getLabels)
         .then(labels => {
-          debugger;
           this.previewLoading = false;
           this.previewTitle = labels.bestGuess ? labels.bestGuess.label : null;
           this.previewTags = labels.entities
