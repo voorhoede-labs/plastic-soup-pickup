@@ -1,7 +1,6 @@
 <template>
   <section class="container">
     <div>
-      <app-logo/>
       <h1>
         plastic-soup-pickup
       </h1>
@@ -18,17 +17,18 @@
       <a href="/challenge" class="button">
         let's go!
       </a>
+      <introduction/>
       <blockquote>I'm an awesome quote</blockquote>
     </div>
   </section>
 </template>
 
 <script>
-import AppLogo from '~/components/AppLogo.vue'
+import Introduction from '~/components/Introduction.vue'
 
 export default {
   components: {
-    AppLogo
+    Introduction,
   }
 }
 </script>
