@@ -1,6 +1,7 @@
 <template>
-  <div>
-    <app-intro-video/>
+  <div class="container">
+    <app-step-one/>
+    <app-step-two/>
     <introduction/>
     <app-impact/>
     <app-footer/>
@@ -8,7 +9,8 @@
 </template>
 
 <script>
-import AppIntroVideo from '~/components/AppIntroVideo.vue'
+import AppStepOne from '~/components/AppStepOne.vue'
+import AppStepTwo from '~/components/AppStepTwo.vue'
 import Introduction from '~/components/Introduction.vue'
 import AppImpact from '~/components/AppImpact.vue'
 import AppFooter from '~/components/AppFooter.vue'
@@ -24,7 +26,8 @@ export default {
     this.userId = id
   },
   components: {
-    AppIntroVideo,
+    AppStepOne,
+    AppStepTwo,
     Introduction,
     AppFooter,
     AppImpact
