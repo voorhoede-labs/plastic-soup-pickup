@@ -6,16 +6,21 @@
       <h1 class="photo-title">GET READY <span class="photo-subtitle">to pick up 10</span></h1>
       <img src="~/assets/get-ready/get-ready-mobile.png" class="get-ready-mobile" />
       <p class="photo-text">Photograph the plastic horizontally and include the brand name</p>
+
+      <form class="photo-form" enctype="multipart/form-data" method="post " action="">
+        <input id="browse-photos" type="file" class="input-browse-photos">
+        <label class="label-browse" for="browse-photos">
+          <span>camera</span>
+        </label>
+
+        <input @change="saveImage($event)" id="take-photo" type="file" class="input-take-photo" accept="image/*" capture>
+        <label class="label-take" for="take-photo">
+          <span>photo</span>
+        </label>
+    </form>
     </div>
 
     <img ref="preview" :src="src" class="image-preview" />
-
-    <form enctype="multipart/form-data" method="post " action="">
-      <input id="browse-photos" type="file" class="input-browse-photos">
-      <label class="label-browse" for="browse-photos">camera</label>
-      <input @change="saveImage($event)" id="take-photo" type="file" class="input-take-photo" accept="image/*" capture>
-      <label class="label-take" for="take-photo">photo</label>
-    </form>
   </div>
 </template>
 
@@ -128,11 +133,19 @@ export default {
 .input-browse-photos,
 .input-take-photo {
   width: 0.1px;
-  height: 0.1;
+  height: 0.1px;
   opacity: 0;
   overflow: hidden;
   position: absolute;
   z-index: -1;
+}
+
+.photo-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 80%;
+  margin-top: 30px;
 }
 
 .photo-title {
@@ -143,19 +156,36 @@ export default {
 
 .photo-subtitle {
   display: block;
-  margin-top: 5px;
+  margin-top: -10px;
   font-size: 24px;
   text-transform: uppercase;
 }
 
 .photo-text {
   z-index: 5;
+  text-align: center;
   color: #fff;
 }
 
-.label-browse {
-  position: absolute;
+.label-browse,
+.label-take {
+  position: relative;
   z-index: 4;
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  padding: 20px;
+  background-color: #f0706c;
+}
+
+.label-browse span,
+.label-take span {
+  position: absolute;
+  top: 100%;
+  text-align: center;
+  left: 0;
+  width: 100%;
 }
 
 
