@@ -7,7 +7,6 @@
 <style>
   .introduction {
     width: 100%;
-    background-color: #F26F69;
   }
 </style>
 
