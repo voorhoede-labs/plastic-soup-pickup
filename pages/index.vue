@@ -1,16 +1,7 @@
 <template>
   <div>
-    <section class="container">
-      <div>
-        <app-intro-video/>
-        <a href="/challenge" class="button">
-          let's go!
-        </a>
-
-        <introduction/>
-        <blockquote>I'm an awesome quote</blockquote>
-      </div>
-    </section>
+    <app-intro-video/>
+    <introduction/>
     <app-impact/>
     <app-footer/>
   </div>
@@ -24,13 +15,13 @@ import AppFooter from '~/components/AppFooter.vue'
 
 export default {
   created() {
-    const userId = this.getCookie('psp-user-id')
+    let id = this.getCookie('psp-user-id')
 
-    if (userId) {
-      this.userId = userId
-    } else {
-      this.setCookie('psp-user-id', new Date().getTime(), 999)
+    if (!id) {
+      id = this.setCookie('psp-user-id', new Date().getTime(), 999)
     }
+
+    this.userId = id
   },
   components: {
     AppIntroVideo,
@@ -60,6 +51,7 @@ export default {
       }
 
       document.cookie = name + '=' + value + expires + '; path=/'
+      return value
     },
     getCookie(name) {
       if (!process.browser) {
