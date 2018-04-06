@@ -1,12 +1,18 @@
 <template>
-  <form enctype="multipart/form-data" method="post " action="">
-		<input @change="saveImage($event)" type="file" accept="image/*" capture>
-		<img ref="preview" :src="src" />
+  <div>
+    <img ref="preview" :src="src" class="image-preview" />
 
-		<div>
-			<button type="submit">Upload Image</button>
-		</div>
-	</form>
+    <h1>GET READY <span class="photo-subtitle">to pick up 10</span></h1>
+
+    <p></p>
+
+    <form enctype="multipart/form-data" method="post " action="">
+      <input id="browse-photos" type="file" class="input-browse-photos">
+      <label for="browse-photos">camera</label>
+      <input @change="saveImage($event)" id="take-photo" type="file" class="input-take-photo" accept="image/*" capture>
+      <label for="take-photo">photo</label>
+    </form>
+  </div>
 </template>
 
 <script>
@@ -27,7 +33,9 @@ try {
 
 export default {
   data() {
-    return { src: 'https://vuejs.org/images/logo.png' }
+    return {
+      src: ''
+    }
   },
   methods: {
     uploadToFirebase(file) {
@@ -38,7 +46,7 @@ export default {
     fileRef
       .put(file)
       .then(snapshot => {
-        return fetch('https://pick-up-10-api-xodrwwxowz.now.sh/api?userid=welcome12345&url=' + snapshot.downloadURL)
+        return fetch('https://pick-up-10-api-wshddsgbes.now.sh/api?userid=welcome12345&imageurl=' + snapshot.downloadURL)
       })
       .then(res => res.json())
       .then(this.getLabel)
@@ -65,3 +73,20 @@ export default {
   }
 }
 </script>
+
+<style>
+.image-preview {
+  max-width: 100%;
+  height: auto;
+}
+
+.input-browse-photos,
+.input-take-photo {
+  width: 0.1px;
+  height: 0.1;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+</style>
