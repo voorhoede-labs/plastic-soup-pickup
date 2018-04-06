@@ -58,7 +58,7 @@ export default {
     width: 110%;
     height: 115px;
     left: -10px;
-    position: relative;
+	position: relative;
 }
 
 .list {
