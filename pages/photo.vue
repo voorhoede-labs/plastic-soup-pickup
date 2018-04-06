@@ -107,7 +107,7 @@ export default {
   flex-direction: column;
   justify-content: space-between;
   padding-top: 40px;
-  height: 50vh;
+  height: 70vh;
   align-items: center;
   padding-left: 24px;
   padding-right: 24px;
@@ -140,7 +140,7 @@ export default {
   flex-direction: row;
   justify-content: space-between;
   width: 80%;
-  margin-top: 30px;
+  margin-top: 76px;
 }
 
 .photo-title {
