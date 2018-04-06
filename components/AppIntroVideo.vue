@@ -17,10 +17,11 @@
 	background-repeat: no-repeat;
 	align-items: flex-end;
 	justify-content: center;
+	margin-bottom: 20px;
 }
+
 .video-title {
-	position: relative;
-	bottom: 0;
+	padding-bottom: 10px;
 	text-align: center;
 }
 </style>
