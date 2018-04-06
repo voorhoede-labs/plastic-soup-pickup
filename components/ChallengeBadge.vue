@@ -1,6 +1,6 @@
 <template>
   <li>
-    <figure class="challenge-badge">
+    <figure class="challenge-badge" :class="{'is-active': isActive}">
       <img
         v-bind:src="require(`~/assets/challenge-badges/${image}`)"
         alt=""
@@ -19,10 +19,17 @@
     flex-direction: column;
     align-items: center;
   }
+
+  .challenge-badge.is-active {
+    color: green;
+  }
 </style>
 
 <script>
 export default {
+  data: ({ title }) => {
+    return { isActive: process.browser && localStorage.getItem(title) ? true : false }
+  },
   props: {
     image: String,
     title: String,
