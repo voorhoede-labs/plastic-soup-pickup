@@ -34,6 +34,7 @@
 
 .header-title {
 	width: 85%;
+	font-size: 2.5rem;
 	color: #2B2F47;
 	text-align: center;
 	display: flex;
