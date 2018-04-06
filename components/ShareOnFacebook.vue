@@ -1,5 +1,5 @@
 <template>
-  <a :href="url" class="share-fb">Share on Facebook</a>
+  <a :href="url" class="share-fb button">Share on Facebook</a>
 </template>
 
 <style>

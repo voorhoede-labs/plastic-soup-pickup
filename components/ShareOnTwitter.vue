@@ -1,5 +1,5 @@
 <template>
-  <a :href="url" class="share-twitter">Share on Twitter</a>
+  <a :href="url" class="share-twitter button">Share on Twitter</a>
 </template>
 
 <style>

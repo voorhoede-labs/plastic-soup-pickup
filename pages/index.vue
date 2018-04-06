@@ -1,14 +1,8 @@
 <template>
   <div>
     <section class="container">
-      <div>
-        <app-intro-video/>
-        <a href="/challenge" class="button">
-          let's go!
-        </a>
-        <introduction/>
-        <blockquote>I'm an awesome quote</blockquote>
-      </div>
+        <app-step-one/>
+        <app-step-two/>
     </section>
     <share-on-facebook/>
     <share-on-twitter/>
@@ -20,7 +14,8 @@
 </template>
 
 <script>
-import AppIntroVideo from '~/components/AppIntroVideo.vue'
+import AppStepOne from '~/components/AppStepOne.vue'
+import AppStepTwo from '~/components/AppStepTwo.vue'
 import Introduction from '~/components/Introduction.vue'
 import AppImpact from '~/components/AppImpact.vue'
 import AppFooter from '~/components/AppFooter.vue'
@@ -38,7 +33,8 @@ export default {
     this.userId = id
   },
   components: {
-    AppIntroVideo,
+    AppStepOne,
+    AppStepTwo,
     Introduction,
     AppFooter,
     ShareOnFacebook,
