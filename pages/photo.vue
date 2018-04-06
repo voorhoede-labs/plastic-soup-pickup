@@ -1,3 +1,14 @@
+<template>
+  <form enctype="multipart/form-data" method="post " action="">
+		<input @change="saveImage($event)" type="file" accept="image/*" capture>
+		<img ref="preview" :src="src" />
+
+		<div>
+			<button type="submit">Upload Image</button>
+		</div>
+	</form>
+</template>
+
 <script>
 import firebase from 'firebase'
 const app = firebase.initializeApp({
@@ -11,11 +22,11 @@ const app = firebase.initializeApp({
 
 export default {
   data() {
-    return { src: '' }
+    return { src: 'https://vuejs.org/images/logo.png' }
   },
   methods: {
-    saveImage() {
-      const input = this.refs.input;
+    saveImage({ target }) {
+      const input = target;
       if (input.files && input.files[0]) {
         const reader = new FileReader();
         const file = input.files[0];
@@ -37,16 +48,4 @@ export default {
   }
 }
 </script>
-
-<template>
-  <form method="post " action="">
-		<input @change="saveImage" data-input type="file" accept="image/*" capture ref="input">
-		<img ref="preview" :src="src" data-preview/>
-
-		<div>
-			<button type="submit">Upload Image</button>
-		</div>
-	</form>
-</template>
-
 
