@@ -27,7 +27,7 @@ try {
 
 export default {
   data() {
-    return { src: 'https://vuejs.org/images/logo.png' }
+    return { src: '' }
   },
   methods: {
     uploadToFirebase(file) {
@@ -41,7 +41,7 @@ export default {
         return fetch('https://pick-up-10-api-xodrwwxowz.now.sh/api?userid=welcome12345&url=' + snapshot.downloadURL)
       })
       .then(res => res.json())
-      .then(this.getLabel)
+      .then(this.getLabels)
       .then(console.log)
       .catch(alert);
     },
@@ -58,9 +58,15 @@ export default {
         this.uploadToFirebase(file);
       }
     },
-    getLabel(recognition) {
+    getLabels(recognition) {
       const bestGuesses = recognition.webDetection.bestGuessLabels;
-      return bestGuesses.length ? bestGuesses[0].label : 'No product recognized'
+      const entities = recognition.webDetection.webEntities
+        .filter(entity => entity.score > .6);
+
+      return {
+        bestGuess: bestGuesses[0],
+        entities
+      }
     }
   }
 }
