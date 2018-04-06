@@ -74,8 +74,8 @@ export default {
         .then(labels => {
           this.previewLoading = false;
           this.previewTitle = labels.bestGuess ? labels.bestGuess.label : null;
-          this.tags = labels.entities
-            .filter(entity => entity.description && entity.description.length)
+          this.previewTags = labels.entities
+            .filter(entity => entity.description)
             .splice(0, 5)
             .map(entity => entity.description);
         })
