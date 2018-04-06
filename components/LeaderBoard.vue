@@ -1,7 +1,7 @@
 <template>
   <div>
     <h4>Leaderboard</h4>
-    <ol>
+    <ol v-if="sortedUsers.length">
       <li v-for="user in sortedUsers" :key="user.id">
         <span class="username">
           {{ user.id }}
@@ -10,6 +10,9 @@
           {{ user.numImages * 13 }}
         </span>
       </li>
+    </ol>
+    <ol v-if="!sortedUsers.length">
+      <li><marquee>LOADING DATA 0x000COFFEE10101ZEROONE!</marquee></li>
     </ol>
   </div>
 </template>
@@ -29,9 +32,9 @@
     flex-direction: column;
     text-align: center;
     background: red;
-    border-radius: 50%;
+    border-radius: 0.5em;
     text-align: center;
-    width: 2rem;
+    min-width: 4rem;
     height: 2rem;
     color: white;
     font-weight: bold;
@@ -58,14 +61,21 @@ export default {
     }
   },
   created() {
-    // fetch('/firebase').then(response => {
-    //   this.users = response
-    // })
-    this.users = Object.keys(json.users).map(key => {
-      const user = json.users[key]
-      user.id = key
-      user.numImages = Object.keys(user.images).length
-      return user
+    fetch('https://pick-up-10-api-isrgvzstxl.now.sh/api/leaderboard').then(response => {
+      if (response.ok) {
+        return response.json()
+      } else {
+        alert('API broke :(')
+      }
+    }).then(users => {
+      this.users = Object.keys(users).map(key => {
+        const user = users[key]
+        user.id = key
+        user.numImages = Object.keys(user.images).length
+        return user
+      })
+    }).catch(err => {
+      console.log(err)
     })
   }
 
