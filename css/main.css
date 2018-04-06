@@ -8,6 +8,7 @@
 }
 
 body {
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: "proxima nova", sans-serif;
@@ -90,4 +91,7 @@ button:focus,
 .button:focus {
   background-color: #f59995;
   color: white;
+}
+.container {
+  padding: 10px;
 }

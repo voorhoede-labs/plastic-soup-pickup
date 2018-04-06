@@ -1,6 +1,6 @@
 <template>
   <figure :class="{'is-active': isActive}">
-    <router-link :to="`/challenge/${slugify(title)}`">
+    <router-link :to="`/challenge/${slug}`">
       <img
         v-bind:src="require(`~/assets/challenge-badges/${image}`)"
         alt=""
@@ -19,6 +19,7 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
+    margin-bottom: 1rem;
   }
 
   figure.is-active {
@@ -31,14 +32,12 @@
 </style>
 
 <script>
-import slugify from 'slugify';
-
 export default {
   data: ({ title }) => ({
-    isActive: process.browser && localStorage.getItem(title) ? true : false,
-    slugify
+    isActive: process.browser && localStorage.getItem(title) ? true : false
   }),
   props: {
+    slug: String,
     image: String,
     title: String,
     points: String,
