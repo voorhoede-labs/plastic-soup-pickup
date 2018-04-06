@@ -25,26 +25,39 @@ export default {
     return { src: 'https://vuejs.org/images/logo.png' }
   },
   methods: {
-    saveImage({ target }) {
-      const input = target;
-      if (input.files && input.files[0]) {
-        const reader = new FileReader();
-        const file = input.files[0];
+    uploadToFirebase(file) {
+    // Create a root reference
+    const ref = firebase.storage().ref();
+    const fileRef = ref.child(file.name);
 
-        reader.onload = event => {
-          this.src = event.target.result;
-        };
+    fileRef
+      .put(file)
+      .then(function(snapshot) {
+        console.log("uploaded a blob or file");
+        console.log(snapshot);
 
-        reader.readAsDataURL(file);
+        fetch('https://pick-up-10-api-xodrwwxowz.now.sh/api?userid=welcome12345&url=' + snapshot.downloadURL)
+          .then(function (response) {
+            console.log(response)
+          })
+      })
+      .catch(function(error) {
+        alert("error", error);
+      });
+  },
+  saveImage({ target }) {
+    const input = target;
+    if (input.files && input.files[0]) {
+      const reader = new FileReader();
+      const file = input.files[0];
 
-        // uploadToFirebase(file);
-
-        // fetch("http://www.example.net", {
-        //   method: "POST",
-        //   body: file
-        // }).then(response => response.json());
-      }
+      reader.onload = event => {
+        this.src = event.target.result;
+      };
+      reader.readAsDataURL(file);
+      this.uploadToFirebase(file);
     }
+  }
   }
 }
 </script>
