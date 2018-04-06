@@ -1,11 +1,15 @@
 <template>
   <div v-if="src" class="photo-preview-wrapper" v-bind:style="{ backgroundImage: src }">
     <photo-preview
+      v-if="src"
       :title="previewTitle"
       :src="src"
       :tags="previewTags"
       :loading="previewLoading"
     />
+
+    <button class="button" v-if="!previewLoading" type="button" @click="reset">Take another one</button>
+    <nuxt-link v-if="!previewLoading" class="button" to="/challenge">Take me to the leaderboard</nuxt-link>
   </div>
   <div v-else class="get-ready">
     <img src="~/assets/get-ready/get-ready-bg.png" class="get-ready-bg" />
@@ -60,6 +64,10 @@ export default {
     }
   },
   methods: {
+    reset() {
+      this.src = null;
+      this.previewLoading = true;
+    },
     uploadToFirebase(file) {
       // Create a root reference
       const ref = firebase.storage().ref();
@@ -68,7 +76,7 @@ export default {
       fileRef
         .put(file)
         .then(snapshot => {
-          return fetch(`https://pick-up-10-api-wshddsgbes.now.sh/api?userid=${this.getCookie('psp-user-id')}&imageurl=${snapshot.downloadURL}`);
+          return fetch(`https://pick-up-10-api.now.sh/api?userid=${this.getCookie('psp-user-id')}&imageurl=${snapshot.downloadURL}`);
         })
         .then(res => res.json())
         .then(this.getLabels)
