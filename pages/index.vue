@@ -1,7 +1,17 @@
 <template>
   <div>
-    <app-intro-video/>
-    <introduction/>
+    <section class="container">
+      <div>
+        <app-intro-video/>
+        <a href="/challenge" class="button">
+          let's go!
+        </a>
+
+        <introduction/>
+        <blockquote>I'm an awesome quote</blockquote>
+      </div>
+    </section>
+    <app-impact/>
     <app-footer/>
   </div>
 </template>
@@ -9,6 +19,7 @@
 <script>
 import AppIntroVideo from '~/components/AppIntroVideo.vue'
 import Introduction from '~/components/Introduction.vue'
+import AppImpact from '~/components/AppImpact.vue'
 import AppFooter from '~/components/AppFooter.vue'
 
 export default {
@@ -24,7 +35,8 @@ export default {
   components: {
     AppIntroVideo,
     Introduction,
-    Footer,
+    AppFooter,
+    AppImpact
   },
   data () {
     return {
