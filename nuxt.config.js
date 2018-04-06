@@ -14,6 +14,7 @@ module.exports = {
     ]
   },
   css: [
+    '~/css/reset.css',
     '~/css/fonts.css',
     '~/css/main.css'
   ],
