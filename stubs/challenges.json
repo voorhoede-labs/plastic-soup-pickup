@@ -1,0 +1,32 @@
+[
+  {
+    "image": "first.png",
+    "title": "Getting Started",
+    "points": "25"
+  },
+  {
+    "image": "collector.png",
+    "title": "Collector",
+    "points": "50"
+  },
+  {
+    "image": "litter-selfie.png",
+    "title": "Litter Selfie",
+    "points": "50"
+  },
+  {
+    "image": "picking-spree.png",
+    "title": "Picking Spree",
+    "points": "50"
+  },
+  {
+    "image": "team-up.png",
+    "title": "Power Up!",
+    "points": "100"
+  },
+  {
+    "image": "pick-up-ten.png",
+    "title": "Pick Up 10",
+    "points": "250"
+  }
+]
