@@ -120,7 +120,7 @@
           })
         }).then(res => {
           this.userExists = true;
-          this.setCookie('psp-user-name', this.username);
+          this.setCookie('psp-user-name', this.username, 31557600);
           const index = this.users.findIndex(user => user.id === this.userid);
           // upadet the current user
           this.users.splice(index, 1, Object.assign(this.users[index], { username: this.username }));

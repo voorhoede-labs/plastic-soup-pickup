@@ -26,7 +26,7 @@ export default {
     let id = this.getCookie('psp-user-id')
 
     if (!id) {
-      id = this.setCookie('psp-user-id', new Date().getTime(), 999)
+      id = this.setCookie('psp-user-id', new Date().getTime(), 31557600)
     }
 
     this.userId = id
