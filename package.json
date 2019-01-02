@@ -13,7 +13,7 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
-    "firebase": "^4.12.1",
+    "firebase": "^5.7.2",
     "nuxt": "^1.0.0",
     "slugify": "^1.2.9"
   },
